@@ -1,3 +1,3 @@
 class BaseTranslator:
-def translate(self, data):
-raise NotImplementedError("translate() must be implemented in subclasses.")
+    def translate(self, data):
+        pass

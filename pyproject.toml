@@ -1,19 +1,21 @@
 [project]
-name = "ml_project"
+name = "ml-project"
 version = "0.1.0"
-description = "Projet ML généré avec Cookiecutter"
-authors = [
-{ name = "Tasnime" }
-]
-requires-python = ">= oui"
-readme = "README.md"
-[tool.setuptools]
-packages = ["src"]
-[tool.pytest.ini_options]
-pythonpath = ["src"]
+description = "Cookiecutter ML project"
+authors = [{ name = "Visiteur" }]
+requires-python = ">=3.10"
+
 [tool.black]
 line-length = 88
-target-version = ["pyoui"]
-[tool.ruff]
-line-length = 88
-select = ["E", "F", "I"]
+target-version = ["py311"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
