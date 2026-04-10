@@ -1,129 +1,58 @@
-# Machine Translation Pipeline Project
+# Cookiecutter ML Project
 
-This repository contains a modular machine translation pipeline designed to translate text
-from French to English using a HuggingFace model and to evaluate translation quality using
-standard NLP metrics such as BLEU. The project is structured to be clear, extensible, and
-aligned with good software engineering practices.
+## Auteur
 
----
-## À propos du projet
+Hakimi Tasnime + AOUN Myriam
 
-Ce dépôt fait partie du cours **Big Data and Business Intelligence (BIDABI)**.  
-Il a pour objectif d’initier les étudiants au travail avec du code open‑source et à l’adaptation de projets
-existants dans une structure professionnelle.
+## Objectif du projet
 
-Dans ce projet, les étudiants intègrent un pipeline de traduction automatique (NLP) basé sur un modèle
-HuggingFace, comprenant le chargement des données, la traduction, le post‑traitement et l’évaluation
-(BLEU). Ils apprennent à :
+Ce projet a pour objectif de concevoir un template Cookiecutter réutilisable pour la création de projets de Machine Learning.
 
-- analyser et comprendre un projet open‑source existant,
-- réorganiser et intégrer ce code dans un template Cookiecutter,
-- structurer un pipeline de traitement de données selon les bonnes pratiques,
-- préparer un environnement reproductible et adapté aux workflows Big Data.
+Il permet de standardiser l’architecture des projets, d’automatiser les étapes répétitives et de fournir une base de code cohérente, maintenable et directement exploitable.
 
-Ce projet constitue une première immersion dans l’ingénierie des pipelines de données et dans les
-méthodologies utilisées dans les systèmes Big Data modernes.
+## Objectifs principaux
 
----
-## 📌 Project Overview
+- Générer rapidement un projet ML structuré
+- Garantir une architecture standardisée et maintenable
+- Intégrer des outils essentiels (tests, formatage, configuration Python)
+- Faciliter la collaboration entre développeurs
+- Réduire les erreurs lors de la création de projets
 
-The goal of this project is to implement a complete translation workflow, including:
+## Structure du projet
 
-- loading input data,
-- applying a machine translation model,
-- processing translated outputs,
-- evaluating translation quality,
-- saving results to an output directory.
+src/
+data/
+output/
+tests/
 
-The pipeline is orchestrated by a central `Orchestrator` class that coordinates all steps.
+## Architecture du projet
 
----
+Le projet est organisé selon une architecture modulaire :
 
-## 📁 Project Structure
-```
-project/
-│
-├── data/                # Input data (CSV, JSON, etc.)
-│   ├── sample.json
-│   ├── sample02.json
-│   └── big.csv
-│
-├── output/              # Generated outputs
-│
-├── src/
-│   ├── loaders/         # Data loading modules
-│   ├── translators/     # HuggingFace translation models
-│   ├── processors/      # Optional text processing steps
-│   ├── evaluators/      # Evaluation metrics (BLEU, etc.)
-│   └── orchestrator/    # Main pipeline controller
-│       └── orchestrator.py
-│
-├── tests/               # unit tests
-└── main.py              # Entry point for running the pipeline
-└── main01.py            # For test
-└── main02.py            # For test
-└── config.py 
-```
+- loaders : chargement des données
+- processors : traitement et nettoyage des données
+- translators : traduction ou transformation des données
+- evaluators : évaluation des résultats
+- orchestrator : coordination du pipeline
 
----
+## Pipeline ML
 
-## ⚙️ How the Pipeline Works
+Le pipeline implémente les étapes suivantes :
 
-The `Orchestrator` class performs the following steps:
+1. Chargement des données
+2. Traduction automatique
+3. Traitement des résultats
+4. Évaluation avec la métrique BLEU
+5. Affichage des résultats
 
-1. **Load data** from the specified file (CSV or JSON).
-2. **Translate text** using the model  
-   `Helsinki-NLP/opus-mt-fr-en`.
-3. **Process results** (optional transformations).
-4. **Evaluate translations** using BLEU or another metric.
-5. **Save outputs** to the `output/` directory.
-6. **Print evaluation scores** and completion status.
+## Technologies utilisées
 
-Example execution:
+- Python 3.10+
+- Cookiecutter
+- pytest
+- black
 
-```python
-if __name__ == "__main__":
-    orch = Orchestrator(
-        data_path="big.csv",
-        output_dir="output",
-        translation_model="Helsinki-NLP/opus-mt-fr-en",
-        metric="bleu"
-    )
-    orch.run()
-```
-## 🎯 Learning Objectives
-By working with this project, students will practice:
+## Exécution du projet
 
-- structuring a Python project using modular architecture,
-- working with HuggingFace translation models,
-- handling text datasets,
-- computing translation quality metrics,
-- managing a complete NLP pipeline from input to evaluation.
-
-## 🧩 Assignment Instructions
-You must use this repository as the source code for your assignment:
-
-👉 https://github.com/delnouty/bidabi-clone-adapt-translate.git (github.com in Bing)
-
-Your task is to:
-
-- Generate a new project using the provided template.
-- Clone this repository.
-- Transfer the code from this repository into the structure created by your template.
-- Adapt the code where necessary to match the template’s conventions.
-- Ensure the pipeline runs correctly inside the new project.
-
-You are expected to demonstrate initiative and independent problem‑solving while integrating the code.
-
-📅 Your results will be reviewed during the next session.
-
-## 🚀 Running the Project
-After integrating the code into your template:
-```Bash
-python -m venv .venv
-source .venv/bin/activate   # or .venv\Scripts\Activate.ps1 on Windows
-pip install -r requirements.txt
-python src/orchestrator/orchestrator.py
-```
-## 📄 License
-This project is provided for educational purposes.  
+```bash
+python main.py
